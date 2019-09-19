@@ -1,0 +1,16 @@
+<apex:page controller="TemplateCont" >
+    <apex:form >
+        <apex:actionRegion >    
+      <apex:inputField value="{!aTemplate.RecordType.Name}">
+                <apex:actionSupport action="{!SearchTemplates}" event="onchange" rerender="matchingTemplates" status="status"/>
+            </apex:inputField>
+            <apex:actionStatus startText=" Please wait..." id="status"/>
+        </apex:actionRegion>
+        <apex:pageBlock title="Matching Templates" id="matchingTemplates" >
+          <apex:pageBlockTable value="{!matchingTemplates}" var="p">
+              <apex:column value="{!p.Property_Location__c}"/>
+              
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

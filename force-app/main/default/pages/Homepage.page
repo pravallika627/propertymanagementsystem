@@ -1,0 +1,46 @@
+<apex:page controller="userdetails" showHeader="false" sidebar="false" standardStylesheets="true" title="Propertymanagement">
+   <apex:form >
+      
+           <style>     
+           .title{
+                  float-align:right;
+               }
+
+               .h2 {
+              background-color:#C71585; 
+                       font-size:20px;
+               text-align:bottom;
+                padding: 15px 32px;
+              
+            margin: 4px 2px;
+                       
+               }
+               body {
+  color: white;
+}
+               body {
+      background-image: url("{!$Resource.property1}");
+      background-height:100%;
+      background-size:cover;
+      opacity:0.9;
+      background-attachment: fixed;
+      }
+            
+        </style>
+       
+       <div class="h2">
+          <h1>
+               <center>
+                <b>Property Management</b>
+                 </center>   
+           </h1>  
+           </div>
+           <apex:pageBlock >
+               <apex:pageBlockButtons location="top" >   
+                   <apex:commandButton value="Sell" action="{!sell}" style="background:green;width:20%;font-size:20px;font-color:white;"/>   
+                   <apex:commandButton value="Buy" action="{!Buy}" style="background:green;width:20%;font-size:20px;"/>       
+                  </apex:pageBlockButtons> 
+                          
+ </apex:pageBlock>
+    </apex:form> 
+</apex:page>

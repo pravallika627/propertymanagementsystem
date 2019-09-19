@@ -1,0 +1,121 @@
+<apex:page controller="Seller_class" title="propertymanagement" showHeader="false" sidebar="false">
+   <apex:form >
+       <style>
+           body {
+       background-image: url("{!$Resource.property5}");
+       background-height:100%;
+       background-size:cover;
+       background-attachment: fixed;
+       }
+       .h{
+          font-size:15px;
+          color:blue;
+           } 
+            .f{
+          font-size:20px;
+          color:red;
+           } 
+           body{
+           backgroung-image:URL({!$Resource.property8});
+            }        
+            body.bPageBlock .pbBody .red .pbSubheader{
+                background-color:#c00000;
+            }
+              body .bPageBlock .pbBody .grey .pbSubheader h3{
+                color:#000;
+            }
+       </style>
+          <div class="f">
+           <center>
+          <b>
+           Sell your Property
+           </b> 
+           </center>
+       </div>
+       <div class="h"> 
+           <apex:pageMessages ></apex:pageMessages>
+    <apex:pageblock >
+        <apex:pageblockbuttons location="top">
+                      <apex:commandButton value="Back" action="{!Back}" immediate="true" style="background:#0000CD;color:white;width:10%;font-size:20px;float:right; border: 2px solid #000000;" />         
+                 </apex:pageblockbuttons>
+      <style>
+            body .bPageBlock .pbBody .red .pbSubheader{
+                background-color:#c00000;
+            }
+        </style>
+         <apex:pageBlockSection >
+         <apex:selectList value="{!selectedRT1}" size="1" multiselect="false"  label="Record Type" title="Record Type" id="recordTypes" required="true">
+                        <apex:selectOptions value="{!RecordTypeList}" />
+             <!--apex:actionSupport event="onchange" action="{!recordValue}" reRender="none"/-->
+             	<!--<apex:param name="value" value="" assignTo="{!Selvalue}"/>-->
+			
+          </apex:selectList>  
+             <apex:commandButton value="Show" action="{!Show}"   style="background:#0000CD;color:white;width:20%;font-size:20px;float:center; border: 2px solid #000000;"/>
+          </apex:pageBlockSection>
+        <apex:outputPanel >
+           <apex:pageBlockSection rendered="{!flag1}" title="Personal information"  collapsible="false">     
+                 <apex:inputfield label="FirstName"  value="{!pobj.FirstName__c}" required="false"/>
+                <apex:inputfield label="LastName"  value="{!pobj.LastName__c}" required="false"/>
+                <apex:inputfield label="Phone Number" value="{!pobj.Phone_Number__c}" required="false"/>
+                <apex:inputfield label="Email Address" value="{!pobj.Email__c}" required="false"/>
+                <apex:inputfield label="Username" value="{!pobj.username__c}"/>
+                <apex:inputfield label="Password" value="{!pobj.Password__c}"/>
+           </apex:pageBlockSection>  
+            <apex:pageBlockSection rendered="{!flag1}" title="propertydetails"  collapsible="false">  
+                 <apex:inputfield label="propertyname" value="{!pobj.Name}"/>
+                 <apex:inputfield label="Bedrooms" value="{!pobj.Bedrooms__c}" required="false"/>
+                <apex:inputfield label="Furniture Status" value="{!pobj.Furniture_Status__c}" required="false"/>
+                <apex:inputfield label="No of open sites" value="{!pobj.No_of_open_sites__c}"/>
+                <apex:inputfield label="Owner Type" value="{!pobj.Owner_Type__c}" required="false"/>
+                <apex:inputfield label="possesion status" value="{!pobj.possesion_status__c}" required="false"/>
+                <apex:inputfield label="Price" value="{!pobj.Price__c}" required="false"/>
+                <apex:inputfield label="Property Location" value="{!pobj.Property_Location__c}" required="false"/>
+                <apex:inputfield label="width of road facing the plot" value="{!pobj.width_of_road_facing_the_plot__c}"/>
+                <apex:inputfield label="PropertyType" value="{!pobj.PropertyType__c}" required="false"/>
+                <apex:inputfield label="Road facility" value="{!pobj.Road_facility__c}"/>
+            </apex:pageBlockSection>
+           <apex:pageBlockSection title="propertyphotos" rendered="{!flag1}" collapsible="false">
+                 <apex:inputfield label="property photo" value="{!pobj.property_photo__c}"/>
+            </apex:pageBlockSection>
+        <apex:pageblocksection rendered="{!flag1}">
+                <apex:commandButton value="save" action="{!save}" style="background:#0000CD;color:white;width:20%;font-size:20px;float:center; border: 2px solid #000000;"/> 
+         </apex:pageblocksection>
+            <!--another recordtype page-->
+           
+        <apex:pageBlockSection rendered="{!flag}" title="Personal information"  collapsible="false" >     
+                 <apex:inputfield label="FirstName"  value="{!pobj.FirstName__c}" required="false" />
+                <apex:inputfield label="LastName"  value="{!pobj.LastName__c}" required="false"/>
+                <apex:inputfield label="Phone Number" value="{!pobj.Phone_Number__c}" required="false"/>
+                <apex:inputfield label="Email Address" value="{!pobj.Email__c}" required="false"/>
+                <apex:inputfield label="Username" value="{!pobj.username__c}"/>
+                <apex:inputfield label="Password" value="{!pobj.Password__c}"/>
+           </apex:pageBlockSection>  
+                         <apex:pageBlockSection rendered="{!flag}" title="propertydetails"  collapsible="false">  
+                     <apex:inputfield label="propertyname" value="{!pobj.Name}" />
+                <apex:inputfield label="Balconies" value="{!pobj.Balconies__c}"/>
+                <apex:inputfield label="Bedrooms" value="{!pobj.Bedrooms__c}" required="false"/>
+                <apex:inputfield label="Floor No" value="{!pobj.Flor_No__c}"/>
+                <apex:inputfield label="Furniture Status" value="{!pobj.Furniture_Status__c}" required="false"/>
+                <apex:inputfield label="No of open sites" value="{!pobj.No_of_open_sites__c}"/>
+                <apex:inputfield label="Owner Type" value="{!pobj.Owner_Type__c}" required="false"/>
+                <apex:inputfield label="possesion status" value="{!pobj.possesion_status__c}" required="false"/>
+                <apex:inputfield label="Price" value="{!pobj.Price__c}" required="false"/>
+                <apex:inputfield label="Property Location" value="{!pobj.Property_Location__c}" required="false"/>
+                <apex:inputfield label="width of road facing the plot" value="{!pobj.width_of_road_facing_the_plot__c}"/>
+                <apex:inputfield label="PropertyType" value="{!pobj.PropertyType__c}" required="false"/>
+                <apex:inputfield label="Road facility" value="{!pobj.Road_facility__c}"/>
+                  
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="property photos" rendered="{!flag}" collapsible="false">
+                 <apex:inputfield label="property photo" value="{!pobj.property_photo__c}"/>
+            </apex:pageBlockSection>
+        <apex:pageBlockSection rendered="{!flag}">
+                <apex:commandButton value="save" action="{!save}"  style="background:#0000CD;color:white;width:20%;font-size:20px;float:center; border: 2px solid #000000;"/>
+             
+</apex:pageBlockSection>
+              
+            </apex:outputPanel>
+        </apex:pageblock>
+       </div>
+        </apex:form>
+    </apex:page>

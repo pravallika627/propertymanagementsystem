@@ -1,0 +1,52 @@
+<apex:page controller="userdetails" showHeader="false" sidebar="false" title="Property Management">
+    <style>
+     .h{
+        font-size:15px;
+        
+        }
+        .k{
+        color:blue;
+        }
+    
+    </style>
+    
+    <apex:form >
+        <div class="h">
+            
+   
+        <apex:pageblock >
+            <apex:pageblockbuttons location="top">
+                <apex:commandButton value="Back" action="{!bk}" style="background:#000000;color:white;width:10%;font-size:20px;float:right; border: 2px solid #000000;"/>         
+            </apex:pageblockbuttons>
+            <style>
+            body .bPageBlock .pbBody .red .pbSubheader{
+                background-color:#c00000;
+            }
+        </style>
+            <div class="k">
+                <apex:outputPanel styleClass="red" layout="block">    
+            <apex:pageblocksection Rendered="{!fl1}" title="propertydetails" collapsible="false">
+                <apex:pageBlockTable value="{!proList}" var="a" style="width:1330px;">
+                      <apex:column value="{!a.property_photo__c}"/>
+                    <apex:column value="{!a.Balconies__c}"/>
+                    <apex:column value="{!a.Bedrooms__c}"/>
+                    <apex:column value="{!a.Flor_No__c}"/>
+                    <apex:column value="{!a.Furniture_Status__c}"/>
+                    <apex:column value="{!a.No_of_open_sites__c}"/>
+                    <apex:column value="{!a.possesion_status__c}"/>
+                    <apex:column value="{!a.PropertyType__c}"/>
+                    <apex:column value="{!a.Road_facility__c}"/>
+                    <apex:column value="{!a.width_of_road_facing_the_plot__c}"/>
+                    <apex:column >
+                        <apex:commandLink value="contactme" action="{!con}" styleClass="h" style="font-weight: bold;color:red;">
+                               <apex:param value="{!a.Id}" assignTo="{!accId}" name="accId"/>
+                        </apex:commandLink>
+                    </apex:column>
+                </apex:pageBlockTable>
+            </apex:pageblocksection> 
+                    </apex:outputPanel> 
+                  </div>
+        </apex:pageblock>
+                 </div>
+    </apex:form>
+</apex:page>

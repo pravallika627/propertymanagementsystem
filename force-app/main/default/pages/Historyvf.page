@@ -1,0 +1,15 @@
+<apex:page controller="FoundHistory">
+    <apex:form >
+    <apex:pageBlock title="Search buyer" rendered="{!FirstName}" >
+            <apex:pageMessages ></apex:pageMessages> 
+            <apex:pageBlockSection >
+                
+                    <apex:outputLabel value="Enter buyer name" ></apex:outputLabel>
+                    <apex:inputText value="{!FirstName}" />   
+                   
+                   <apex:commandButton action="{!buyersearch}" value="search"/>
+                
+        </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

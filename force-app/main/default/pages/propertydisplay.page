@@ -1,0 +1,61 @@
+<apex:page controller="userdetails" showHeader="false" sidebar="false"  title="propertymanagement">
+     
+    <apex:form > 
+    <style>  
+    body {
+       background-image: url("{!$Resource.property8}");
+       background-height:100%;
+       background-size:cover;
+       background-attachment: fixed;
+       }
+        .h{
+        font-size:15px;
+        color:green;
+        }
+        p {
+  font-family: verdana;
+  font-size:20px;
+ color:blue;
+}
+   
+</style>
+        <style>
+            body .bPageBlock .pbBody .red .pbSubheader{
+                background-color:#c00000;
+            }
+        </style>
+       <div class="h" align="center">    
+    <apex:pageblock >
+        
+        <apex:pageblockbuttons location="top" >
+         <apex:commandButton value="Back" action="{!Back}" style="background:#0000CD;color:white;width:10%;font-size:20px;float:right; border: 2px solid #000000;" />
+             </apex:pageblockbuttons>
+      <apex:pageBlockSection >
+        
+                    <apex:selectList value="{!selectedRT}" size="1" multiselect="false" label="Property Type" title="Record Type" id="recordTypes">
+                        <apex:selectOptions value="{!RecordTypeList}" />
+                     
+                    </apex:selectList>                    
+                        <apex:commandButton value="Show" action="{!Show}" style="background:#0000CD;color:white;width:20%;font-size:20px;float:center; border: 2px solid #000000;"/> 
+                </apex:pageBlockSection>  
+        
+        <apex:outputPanel styleClass="red" layout="block"> 
+         <apex:pageblocksection rendered="{!fl1}" id="redSection" title="Property details" columns="2" collapsible="false">
+             <apex:pageBlockTable value="{!propertyList}" var="a" styleClass="f" style="width:1310px;" >
+               <apex:column value="{!a.property_photo__c}" />
+                  <apex:column value="{!a.Name}" />
+                    <apex:column value="{!a.Owner_Type__c}"/>
+                    <apex:column value="{!a.Property_Location__c}"/>
+                       <apex:column value="{!a.RecordType.Name}"/>
+                    <apex:column headerValue="Property Location">
+                        <apex:commandlink value="{!a.Property_Location__c}" action="{!propertydetailpage}" style="float:right;">
+                           <apex:param value="{!a.Id}" assignTo="{!propId}" name="propId"/>
+                        </apex:commandlink>
+                    </apex:column>
+                </apex:pageBlockTable>
+            </apex:pageblocksection>
+            </apex:outputPanel>
+        </apex:pageblock> 
+           </div>
+        </apex:form>     
+</apex:page>
